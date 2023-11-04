@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name" translatable="false">To-do App</string>
+    <string name="logo">logo</string>
+    <string name="New_task">New task</string>
+    <string name="Task_name">Task name</string>
+    <string name="task">task</string>
+    <string name="Task_due_date">Task due date</string>
+    <string name="date">date</string>
+    <string name="title_activity_add_card">Add card</string>
+    <string name="Add_a_task">Add a task</string>
+    <string name="go_back">go back</string>
+    <string name="Example_task_name">Go shopping</string>
+    <string name="Priority">Priority</string>
+    <string name="Low">Low</string>
+    <string name="Medium">Medium</string>
+    <string name="High">High</string>
+    <string name="Remove_task">Remove task</string>
+</resources>
