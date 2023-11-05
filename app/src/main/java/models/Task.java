@@ -5,9 +5,10 @@ import android.app.Application;
 
 import com.example.todoapp.R;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Task {
+public class Task implements Serializable {
 
     public enum Priority{
         LOW(R.string.Low), MED(R.string.Medium), HIGH(R.string.High);
@@ -69,4 +70,5 @@ public class Task {
     public void setChecked(boolean checked) {
         isChecked = checked;
     }
+
 }

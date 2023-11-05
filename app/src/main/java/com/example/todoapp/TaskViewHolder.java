@@ -1,15 +1,18 @@
 package com.example.todoapp;
 
+import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.CheckBox;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-public class TaskViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+public class TaskViewHolder extends RecyclerView.ViewHolder{
 
     private TextView txt_name;
     private TextView txt_date;
@@ -25,11 +28,6 @@ public class TaskViewHolder extends RecyclerView.ViewHolder implements View.OnCl
         txt_priority = (TextView) itemView.findViewById(R.id.txt_priority);
         cb_done = (CheckBox) itemView.findViewById(R.id.cb_done);
         fab_button = (FloatingActionButton) itemView.findViewById(R.id.fab_delete);
-    }
-
-    @Override
-    public void onClick(View v) {
-        //este método dice lo que hay que hacer cuando hagas click en el item
     }
 
     public TextView getTxt_name() {

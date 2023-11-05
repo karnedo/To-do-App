@@ -38,8 +38,10 @@
         android:layout_marginTop="32dp"
         android:autofillHints="@string/date"
         android:ems="10"
-        android:hint="@string/Task_due_date"
+        android:focusableInTouchMode="false"
         android:inputType="date"
+        android:hint="@string/Pick_a_day"
+        android:onClick="showCalendar"
         android:textColor="#000000"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.168"
@@ -67,9 +69,26 @@
         android:contentDescription="@string/go_back"
         android:focusable="true"
         android:onClick="goBack"
+        app:tint="@color/black"
         app:fabCustomSize="58dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_back_arrow" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_save_task"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:backgroundTint="@color/white"
+        android:clickable="true"
+        android:contentDescription="@string/Add_a_task"
+        android:focusable="true"
+        android:onClick="addTask"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/ic_save_task"
+        app:tint="@color/black" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

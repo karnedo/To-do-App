@@ -15,4 +15,8 @@
     <string name="Medium">Media</string>
     <string name="High">Alta</string>
     <string name="Remove_task">Eliminar tarea</string>
+    <string name="Save_task">Save task</string>
+    <string name="Pick_a_day">Elige un día</string>
+    <string name="Need_choose_name">Debe escribir un nombre</string>
+    <string name="Need_choose_date">Debe elegir una fecha</string>
 </resources>
