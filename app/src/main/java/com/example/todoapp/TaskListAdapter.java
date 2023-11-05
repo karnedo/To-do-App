@@ -14,13 +14,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Comparator;
-import java.util.HashSet;
 import java.util.Locale;
 
 import models.Task;
 
-public class TaskListAdapter extends RecyclerView.Adapter<TaskViewHolder> {
+public class TaskListAdapter extends RecyclerView.Adapter<TaskViewHolder>{
 
     private final ArrayList<Task> tasks;
 
@@ -43,7 +41,7 @@ public class TaskListAdapter extends RecyclerView.Adapter<TaskViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull TaskViewHolder holder, int position) {
-        Task task = tasks.get(position);
+        final Task task = tasks.get(position);
         String date = new SimpleDateFormat("MM/dd/yyyy", Locale.getDefault()).format(task.getDate());
         String priority = context.getString(task.getPriority().getStringId());
         holder.getFab_button().setVisibility( (task.isChecked()) ? View.VISIBLE : View.GONE );
@@ -51,13 +49,14 @@ public class TaskListAdapter extends RecyclerView.Adapter<TaskViewHolder> {
         holder.getTxt_date().setText(date);
         holder.getTxt_priority().setText(priority);
         holder.getCb_done().setChecked(task.isChecked());
-        int pos = position;
-        Log.d("MyApp", "Position: " + position);
+
+        Log.d("MyApp", "Position: " + holder.getListPosition());
         //Anyadimos el listener a los botones de borrar y marcar como terminada.
         holder.getFab_button().setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
                 //Si el botón de borrar se presiona, se borra la tarea seleccionada.
+                int pos = holder.getListPosition();
                 tasks.remove(pos);
                 notifyItemRemoved(pos);
                 notifyItemRangeChanged(pos, tasks.size());
@@ -69,18 +68,42 @@ public class TaskListAdapter extends RecyclerView.Adapter<TaskViewHolder> {
             public void onClick(View v){
                 boolean checked = holder.getCb_done().isChecked();
                 //Mostramos el botón de borrar si la tarea está completada.
+                int pos = holder.getListPosition();
                 holder.getFab_button().setVisibility( (checked) ? View.VISIBLE : View.GONE );
                 task.setChecked(checked);
                 notifyItemChanged(pos);
+
+                //Task movedTask = tasks.get(pos);
+                if(checked){
+                    //Lo llevamos al final de la lista
+                    moveTaskToEnd(pos);
+                }else{
+                    moveTaskToStart(pos);
+                }
             }
         });
     }
 
-    public void addTask(Task task){
+    public void moveTaskToStart(int pos){
+        Task task = tasks.remove(pos);
+        tasks.add(0, task);
+        notifyItemMoved(pos, 0);
+
+    }
+
+    public void moveTaskToEnd(int pos){
+        Task task = tasks.remove(pos);
         tasks.add(task);
-        notifyItemInserted(tasks.size() - 1);
+        notifyItemMoved(pos, tasks.size() - 1);
+
+    }
+
+    public void addTask(Task task){
+        tasks.add(0, task);
+        notifyItemInserted(0);
     }
 
     @Override
     public int getItemCount() { return tasks.size(); }
+
 }

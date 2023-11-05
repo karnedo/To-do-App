@@ -17,7 +17,6 @@
     <string name="Remove_task">Remove task</string>
     <string name="Save_task">Save task</string>
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="Pick_a_day">Pick a day</string>
     <string name="Need_choose_name">You need to choose a name</string>
     <string name="Need_choose_date">You need to choose date</string>

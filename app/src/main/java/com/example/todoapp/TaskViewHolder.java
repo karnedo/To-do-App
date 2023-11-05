@@ -30,6 +30,10 @@ public class TaskViewHolder extends RecyclerView.ViewHolder{
         fab_button = (FloatingActionButton) itemView.findViewById(R.id.fab_delete);
     }
 
+    public int getListPosition(){
+        return this.getLayoutPosition();
+    }
+
     public TextView getTxt_name() {
         return txt_name;
     }

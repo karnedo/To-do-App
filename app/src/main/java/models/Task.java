@@ -71,4 +71,10 @@ public class Task implements Serializable {
         isChecked = checked;
     }
 
+    @Override
+    public String toString() {
+        return "Task{" +
+                "name='" + name + '\'' +
+                '}';
+    }
 }
