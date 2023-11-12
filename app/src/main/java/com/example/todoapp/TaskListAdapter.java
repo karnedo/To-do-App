@@ -3,17 +3,17 @@ package com.example.todoapp;
 import static com.example.todoapp.R.layout.task_rv;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Collections;
+import java.util.Date;
 import java.util.Locale;
 
 import models.Task;
@@ -42,7 +42,15 @@ public class TaskListAdapter extends RecyclerView.Adapter<TaskViewHolder>{
     @Override
     public void onBindViewHolder(@NonNull TaskViewHolder holder, int position) {
         final Task task = tasks.get(position);
-        String date = new SimpleDateFormat("MM/dd/yyyy", Locale.getDefault()).format(task.getDate());
+        String date = new SimpleDateFormat("yyyy/MM/dd", Locale.getDefault()).format(task.getDate());
+
+        //Si la fecha de la tarea es igual o mayor que la actual, avisar al usuario
+        //cambiado de color la fecha
+        Date todayMinusOneDay = new Date(new Date().getTime() - (1000 * 60 * 60 * 24));
+        if(task.getDate().before(todayMinusOneDay)){
+            holder.getTxt_date().setTextColor(ContextCompat.getColor(context, R.color.warningTextColor));
+        }
+
         String priority = context.getString(task.getPriority().getStringId());
         holder.getFab_button().setVisibility( (task.isChecked()) ? View.VISIBLE : View.GONE );
         holder.getTxt_name().setText(task.getName());
@@ -50,7 +58,6 @@ public class TaskListAdapter extends RecyclerView.Adapter<TaskViewHolder>{
         holder.getTxt_priority().setText(priority);
         holder.getCb_done().setChecked(task.isChecked());
 
-        Log.d("MyApp", "Position: " + holder.getListPosition());
         //Anyadimos el listener a los botones de borrar y marcar como terminada.
         holder.getFab_button().setOnClickListener(new View.OnClickListener(){
             @Override

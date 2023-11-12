@@ -1,23 +1,17 @@
 package com.example.todoapp;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
-import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.service.voice.VoiceInteractionSession;
-import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
-import android.widget.Toast;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.Locale;
 
@@ -27,8 +21,8 @@ public class AddCardActivity extends AppCompatActivity {
 
     public static final String NEW_TASK = "com.example.todoapp.MainActivity.Task";
 
-    private EditText edt_date;
     private EditText edt_task_name;
+    private EditText edt_date;
     private Spinner sp_priority;
 
     @Override
@@ -37,9 +31,9 @@ public class AddCardActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_add_card);
 
-        edt_date = (EditText) findViewById(R.id.edt_date);
-        edt_task_name = (EditText) findViewById(R.id.edt_task_name);
-        sp_priority = (Spinner) findViewById(R.id.sp_priority);
+        edt_date = findViewById(R.id.edt_date);
+        edt_task_name = findViewById(R.id.edt_task_name);
+        sp_priority = findViewById(R.id.sp_priority);
 
         //Introducimos las prioridades en el Spinner
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
@@ -72,7 +66,7 @@ public class AddCardActivity extends AppCompatActivity {
         }
         if(error) return;
 
-        SimpleDateFormat format = new SimpleDateFormat("YYYY/MM/dd");
+        SimpleDateFormat format = new SimpleDateFormat("yyyy/MM/dd", Locale.getDefault());
         Date date = null;
         try{
             date = format.parse(dateStr);

@@ -18,5 +18,8 @@
     <string name="Save_task">Save task</string>
     <string name="Pick_a_day">Pick a day</string>
     <string name="Need_choose_name">You need to choose a name</string>
-    <string name="Need_choose_date">You need to choose date</string>
+    <string name="Need_choose_date">You need to choose a day</string>
+    <string name="Need_choose_time">You need to choose an hour</string>
+    <string name="Pick_a_time">Pick a time</string>
+    <string name="time">time</string>
 </resources>
