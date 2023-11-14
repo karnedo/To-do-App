@@ -8,7 +8,7 @@ El objetivo de la aplicación es la de proveer de una manera intuitiva y rápida
 - **Values y traducciones**: La aplicación está desarrollada de manera que exista la mínima cantidad de valores hard coded: esto significa que todas las cadenas de texto, todos los colores y todas las dimensiones de la interfaz se encuentran almacenados en el directorio values. Además, esta traducida a los idiomas Español e Inglés.\
 - **Intent/Bundle**: Se ha empleado el uso de las clases Intent y Bundle para pasar datos entre actividades.
 - **SavedInstanceStated**: los datos no se pierden cuando se cambia la orientación del dispositivo.
-- **Portrait/Landscape**: La aplicación se adapta correctamente tanto cuando el dispositivo está en horientación vertical como en horizontal.
+- **Portrait/Landscape**: La aplicación se adapta correctamente tanto cuando el dispositivo está en orientación vertical como en horizontal.
 
 ### Extras
 - **Persistencia**: Al no ser Firebase contenido del presente tema, se ha optado por almacenar las tareas en un fichero de texto plano. De esta forma, todas las tareas permanecen guardadas en la memoria interna del dispositivo, pudiendo cerrar la aplicación o apagar el teléfono mantentiendo todas las tareas intactas.
